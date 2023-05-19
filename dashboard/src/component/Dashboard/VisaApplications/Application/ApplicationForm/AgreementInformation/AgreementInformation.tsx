@@ -3,6 +3,7 @@ import {
   IAgreement,
   IVisaApplicationFormValues,
 } from '../../../../../../models/interfaces';
+import moment from 'moment';
 
 export const AgreementInformation = ({
   agreement,
@@ -13,7 +14,7 @@ export const AgreementInformation = ({
 
   const initialValues = {
     place: agreement?.place || '',
-    date: agreement?.date || '',
+    date: moment(agreement?.date) || moment(),
   };
   const onFinish = (value: IVisaApplicationFormValues) => {
     console.log('value', value);
