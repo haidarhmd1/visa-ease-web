@@ -1,0 +1,125 @@
+import { Alert, Avatar, Button, Card, List, Table } from 'antd';
+import { ColumnsType } from 'antd/es/table';
+import { PlusCircleOutlined, ReloadOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { getAllUsers } from '../../../services/api';
+import { IVisaApplicant } from '../../../models/interfaces';
+import moment from 'moment';
+import uuid from 'react-uuid';
+
+// const useColumns = () => {
+//   const navigate = useNavigate();
+//   const columns: ColumnsType<IVisaApplicant> = [
+//     {
+//       title: 'Name',
+//       dataIndex: 'name',
+//       key: 'name',
+//       render: (_, record) => (
+//         <a onClick={() => navigate(record.id)}>{record.fullname}</a>
+//       ),
+//     },
+//     {
+//       title: 'Address',
+//       key: 'address',
+//       dataIndex: 'address',
+//       render: (_, record) => (
+//         <p>{`${record.country} - ${record.city}, ${record.street}`}</p>
+//       ),
+//     },
+//     {
+//       title: 'Date of Birth',
+//       key: 'dob',
+//       dataIndex: 'dob',
+//       render: (_, record) => <p>{moment(record.dob).format('YYYY-MM-DD')}</p>,
+//     },
+//     {
+//       title: 'Nationality',
+//       key: 'nationality',
+//       dataIndex: 'nationality',
+//       render: (_, record) => <p>{record.nationality}</p>,
+//     },
+//   ];
+
+//   return { columns };
+// };
+
+export const VisaApplications = () => {
+  const navigate = useNavigate();
+  // const { columns } = useColumns();
+
+  const {
+    data: users,
+    refetch,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ['getAllUsers'],
+    queryFn: getAllUsers,
+    refetchOnWindowFocus: false,
+  });
+
+  return (
+    <div>
+      <div className="flex justify-end mb-4">
+        <Button type="primary" icon={<PlusCircleOutlined />}>
+          Add new
+        </Button>
+        <div className="mb-4 float-right">
+          <Button
+            type="link"
+            onClick={() => refetch()}
+            icon={<ReloadOutlined />}
+          >
+            Reload Data
+          </Button>
+        </div>
+      </div>
+      {/* <Card className="m-auto"> */}
+      {isError && (
+        <Alert
+          message="Error"
+          description="There was an error loading your data, if this error persists referesh, or call the system admin"
+          type="error"
+          showIcon
+          action={
+            <Button onClick={() => refetch()} size="small" danger>
+              Retry
+            </Button>
+          }
+        />
+      )}
+      {isLoading && <List loading />}
+      {users?.data && (
+        <>
+          <List
+            bordered
+            dataSource={users?.data}
+            renderItem={(item: IVisaApplicant, index) => (
+              <List.Item extra={<div>content</div>}>
+                <List.Item.Meta
+                  avatar={
+                    <Avatar
+                      src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
+                    />
+                  }
+                  title={
+                    <a onClick={() => navigate(item.id)}>{item.fullname}</a>
+                  }
+                  description={item.email}
+                />
+              </List.Item>
+            )}
+          />
+          {/* <Table
+              columns={columns}
+              loading={isLoading}
+              dataSource={users?.data}
+              rowKey={uuid()}
+            /> */}
+        </>
+      )}
+      {/* </Card> */}
+    </div>
+  );
+};

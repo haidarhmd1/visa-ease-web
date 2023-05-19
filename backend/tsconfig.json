@@ -1,0 +1,23 @@
+{
+    "extends": "./node_modules/@tsconfig/node18/tsconfig.json",
+    "compilerOptions": {
+        "sourceMap": true,
+        "outDir": "./build",
+        "rootDir": "./",
+        "moduleResolution": "node",
+        "baseUrl": "./src",
+        "incremental": true,
+        "paths": {
+            "@/*": [
+                "*"
+            ]
+        }
+    },
+    "include": [
+        "./**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "build"
+    ]
+}

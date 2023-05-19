@@ -1,0 +1,1 @@
+export { HomeHeroView } from './HomeHeroView';

@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "visastar-expo-app",
+    "slug": "visastar-expo-app",
+    "privacy": "unisted",
+    "version": "1.0.0",
+    "splash": {
+      "image": "src/assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "org.name.visastarexpoapp",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access your camera"
+      }
+    },
+    "android": {
+      "package": "org.name.visastarexpoapp",
+      "permissions": [
+        "android.permission.CAMERA"
+      ]
+    },
+    "plugins": [],
+    "extra": {
+      "eas": {
+        "projectId": "6910cbbc-532d-463a-81df-5433c179439c"
+      }
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/6910cbbc-532d-463a-81df-5433c179439c"
+    }
+  },
+  "name": "visastar-expo-app"
+}

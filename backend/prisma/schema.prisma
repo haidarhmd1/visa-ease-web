@@ -1,0 +1,128 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model DashboardUser {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  fullname  String   @db.VarChar(255)
+  email     String   @unique
+  password  String   @db.VarChar(255)
+}
+
+model User {
+  id                       String            @id @default(uuid())
+  createdAt                DateTime          @default(now())
+  updatedAt                DateTime          @updatedAt
+  fullname                 String            @db.VarChar(255)
+  gender                   Gender            @default(MALE)
+  dob                      DateTime
+  street                   String            @db.VarChar(255)
+  email                    String            @unique
+  password                 String            @db.VarChar(255)
+  acceptTermsAndConditions Boolean           @default(false)
+  zipCode                  String?           @db.VarChar(255)
+  city                     String            @db.VarChar(255)
+  country                  String            @db.VarChar(255)
+  nationality              String            @db.VarChar(255)
+  profession               String            @db.VarChar(255)
+  phone                    String            @unique
+  emailConfirmed           Boolean           @default(false)
+  emailToken               String            @db.VarChar(255)
+  maritalStatus            MaritalStatus     @default(SINGLE)
+  visaApplication          VisaApplication[]
+
+  @@unique([email, phone])
+}
+
+model VisaApplication {
+  id                 String              @id @default(uuid())
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  status             VisaStatus          @default(IN_PROGRESS)
+  visaProcessingType VisaProcessingType? @default(STANDARD)
+  visaApplicationId  String              @unique
+  country            String              @db.VarChar(255)
+  user               User                @relation(fields: [userId], references: [id])
+  userId             String
+  FlightInformation  FlightInformation?
+  Documents          Documents[]
+  Agreement          Agreement?
+}
+
+model FlightInformation {
+  id                              String          @id @default(uuid())
+  createdAt                       DateTime        @default(now())
+  updatedAt                       DateTime        @updatedAt
+  expectedTravelStartDate         DateTime
+  expectedReturnFlightDate        DateTime
+  cruise                          Boolean         @default(false)
+  invoiceRecipientSameAsApplicant Boolean         @default(true)
+  additionalAddress               String?         @db.VarChar(255)
+  kindOfTrip                      KindOfTrip      @default(SINGLE_ENTRY)
+  visa                            VisaApplication @relation(fields: [visa_ApplicationId], references: [id])
+  visa_ApplicationId              String          @unique
+}
+
+model Documents {
+  id                    String          @id @default(uuid())
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+  documentNameType      String?         @db.VarChar(255)
+  documentImageFilePath String?         @db.VarChar(255)
+  visa                  VisaApplication @relation(fields: [visa_ApplicationId], references: [id])
+  visa_ApplicationId    String
+}
+
+model Agreement {
+  id                 String          @id @default(uuid())
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+  place              String          @db.VarChar(255)
+  date               DateTime
+  visa               VisaApplication @relation(fields: [visa_ApplicationId], references: [id])
+  visa_ApplicationId String          @unique
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum MaritalStatus {
+  SINGLE
+  MARRIED
+  DIVORCED
+  WIDOWED
+}
+
+enum KindOfTrip {
+  SINGLE_ENTRY
+  MULTIPLE_ENTRY
+}
+
+enum VisaStatus {
+  IN_PROGRESS
+  NOT_STARTED
+  CANCELLED
+  PENDING
+  NOT_PAID
+  PAID
+  PAYMENT_PENDING
+  COMPLETED
+  READY
+}
+
+enum VisaProcessingType {
+  STANDARD
+  EXPRESS
+}

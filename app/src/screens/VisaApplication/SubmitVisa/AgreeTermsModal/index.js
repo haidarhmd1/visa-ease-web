@@ -1,0 +1,1 @@
+export { AgreeTermsModal } from './AgreeTermsModal';

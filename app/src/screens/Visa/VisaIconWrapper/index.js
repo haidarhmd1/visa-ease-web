@@ -1,0 +1,1 @@
+export { VisaIconWrapper } from './VisaIconWrapper';

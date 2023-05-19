@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  dashboard:
+    build:
+      dockerfile: 'Dockerfile'
+    volumes:
+      - ./src:/app/src
+      - yarn-cache:/usr/local/share/.cache/yarn
+    command: yarn dev
+    ports:
+      - "5173:5173"
+volumes:
+  yarn-cache:

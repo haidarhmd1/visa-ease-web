@@ -1,0 +1,1 @@
+export { DocumentInformation } from './DocumentInformation';

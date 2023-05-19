@@ -1,0 +1,11 @@
+{
+  "name": "visastar",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "docker:up": "cd backend && yarn docker:up -d && cd .. && cd dashboard && yarn docker:up -d && cd ..",
+    "docker:down": "cd backend && yarn docker:down && cd .. && cd dashboard && yarn docker:down && cd ..",
+    "run:ios": "cd app && yarn ios && cd .."
+  }
+}
