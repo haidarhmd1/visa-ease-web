@@ -1,1 +1,0 @@
-export { ResidencePermit } from './ResidencePermit';

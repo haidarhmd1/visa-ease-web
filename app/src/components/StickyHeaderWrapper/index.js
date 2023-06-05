@@ -1,1 +1,0 @@
-export { StickyHeaderWrapper } from './StickyHeaderWrapper';

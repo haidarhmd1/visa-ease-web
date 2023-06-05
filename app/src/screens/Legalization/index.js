@@ -1,1 +1,0 @@
-export { Legalization } from './Legalization';

@@ -1,1 +1,0 @@
-export { CaptureDocument } from './CaptureDocument';

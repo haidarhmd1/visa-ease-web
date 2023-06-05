@@ -1,1 +1,0 @@
-export { RegisterHeader } from './RegisterHeader';

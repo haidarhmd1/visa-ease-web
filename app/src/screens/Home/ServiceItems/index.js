@@ -1,1 +1,0 @@
-export { ServiceItems } from './ServiceItems';

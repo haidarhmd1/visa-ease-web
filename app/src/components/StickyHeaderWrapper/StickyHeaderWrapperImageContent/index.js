@@ -1,1 +1,0 @@
-export { StickyHeaderWrapperImageContent } from './StickyHeaderWrapperImageContent';

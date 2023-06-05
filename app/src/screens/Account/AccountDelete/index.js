@@ -1,1 +1,0 @@
-export { AccountDelete } from './AccountDelete';
