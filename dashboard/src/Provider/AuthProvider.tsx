@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       // await fetchUserData();
       toast('Logged In!');
-      navigate('/overview'); // Redirect to dashboard after successful login
+      navigate('/visa-application'); // Redirect to dashboard after successful login
     } catch (error: unknown) {
       console.error(error);
       toast.error('error');

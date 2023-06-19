@@ -1,5 +1,4 @@
 import { Alert, Button, Skeleton } from 'antd';
-import { Overview } from './Overview/Overview';
 import { Route, Routes } from 'react-router-dom';
 import { VisaApplications } from './VisaApplications';
 import { Application } from './VisaApplications/Application';
@@ -32,10 +31,6 @@ export const Dashboard = () => {
       )}
       {data?.data && (
         <Routes>
-          <Route
-            path="/overview"
-            element={<Overview userData={data?.data} />}
-          />
           <Route path="/visa-application" element={<VisaApplications />} />
           <Route path="/visa-application/:id" element={<Application />} />
         </Routes>

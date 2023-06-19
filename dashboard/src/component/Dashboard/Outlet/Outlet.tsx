@@ -1,12 +1,10 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react';
+import { ReactNode, useContext, useEffect, useState } from 'react';
 import {
-  PieChartOutlined,
-  TeamOutlined,
   UserOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
 } from '@ant-design/icons';
-import { Button, MenuProps, Result } from 'antd';
+import { Button, Result } from 'antd';
 import { Layout, Menu, theme } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../../Provider/AuthProvider';
@@ -14,32 +12,12 @@ import { Header } from 'antd/es/layout/layout';
 import { HeadTitle } from '../../HeadTitle/HeadTitle';
 import { useOnlineStatus } from '../../../Provider/OnlineStatusProvider';
 import { toast } from 'react-hot-toast';
+import { MenuItem, getItem } from './Outlet.helper';
 
 const { Content, Sider } = Layout;
 
-type MenuItem = Required<MenuProps>['items'][number];
-
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[]
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  } as MenuItem;
-}
-
 const items: MenuItem[] = [
-  getItem('Overview', 'overview', <PieChartOutlined />),
   getItem('Visa Applications', 'visa-application', <UserOutlined />),
-  getItem('Other Services', 'other-services', <TeamOutlined />, [
-    getItem('Legalization', 'other-services/legalization'),
-    getItem('Translation', 'other-services/translations'),
-  ]),
 ];
 
 export const Outlet = ({

@@ -382,6 +382,8 @@ const deleteUser = async (request: Request, response: Response) => {
       deleteFlightInformation,
       deleteVisaApplication,
     ]);
+
+    return response.sendStatus(200);
   } catch {
     return response.sendStatus(500);
   }
