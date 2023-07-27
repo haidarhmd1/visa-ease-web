@@ -93,6 +93,20 @@ model Agreement {
   visa_ApplicationId String          @unique
 }
 
+model CountriesList {
+  id                 String   @id @default(uuid())
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  title              String   @db.VarChar(255)
+  description        String   @db.Text
+  information        String   @db.Text
+  weNeed             String   @db.Text
+  countrieNotAllowed String   @db.VarChar(255)
+  countrieNoVisaNeed String   @db.VarChar(255)
+  imageFilePath      String   @db.VarChar(255)
+  imageName          String   @db.VarChar(255)
+}
+
 enum Gender {
   MALE
   FEMALE
