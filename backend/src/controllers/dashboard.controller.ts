@@ -300,6 +300,21 @@ const getAllVisasByUser = async (request: Request, response: Response) => {
   return response.send(getAllUserData);
 };
 
+// TODO add country CRUD controller
+
+const getAllCountries = async (request: Request, response: Response) => {
+  // if (!response.locals.jwt) return;
+  // const id = response.locals.jwt.userId;
+};
+
+const getSingleCountryById = async (request: Request, response: Response) => {};
+
+const addNewCountry = async (request: Request, response: Response) => {};
+
+const updateCountry = async (request: Request, response: Response) => {};
+
+const deleteCountry = async (request: Request, response: Response) => {};
+
 export default {
   validateToken,
   register,
@@ -310,4 +325,9 @@ export default {
   updateUser,
   deleteUser,
   getAllVisasByUser,
+  getAllCountries,
+  getSingleCountryById,
+  addNewCountry,
+  updateCountry,
+  deleteCountry,
 };

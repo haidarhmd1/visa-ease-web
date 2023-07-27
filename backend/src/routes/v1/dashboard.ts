@@ -23,4 +23,14 @@ router.get(
 );
 router.get('/visa-application/:id', validateJWT, getVisaApplicationById);
 
+router.get('/getAllCountries', validateJWT, controller.getAllCountries);
+router.get(
+  '/getSingleCountry/:id',
+  validateJWT,
+  controller.getSingleCountryById
+);
+router.post('/addNewCountry', validateJWT, controller.addNewCountry);
+router.put('/updateCountry/:id', validateJWT, controller.updateCountry);
+router.delete('/addNewCountry/:id', validateJWT, controller.deleteCountry);
+
 export default router;
