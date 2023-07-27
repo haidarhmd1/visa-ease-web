@@ -3,6 +3,7 @@ import {
   UserOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
+  GlobalOutlined,
 } from '@ant-design/icons';
 import { Button, Result } from 'antd';
 import { Layout, Menu, theme } from 'antd';
@@ -18,6 +19,7 @@ const { Content, Sider } = Layout;
 
 const items: MenuItem[] = [
   getItem('Visa Applications', 'visa-application', <UserOutlined />),
+  getItem('Countries', 'countries', <GlobalOutlined />),
 ];
 
 export const Outlet = ({

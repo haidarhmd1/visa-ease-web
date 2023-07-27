@@ -5,6 +5,7 @@ import { Application } from './VisaApplications/Application';
 import { useQuery } from '@tanstack/react-query';
 import { getMe } from '../../services/api';
 import { Outlet } from './Outlet/Outlet';
+import { Countries } from './Countries';
 
 export const Dashboard = () => {
   const { data, refetch, isLoading, isError } = useQuery({
@@ -33,6 +34,8 @@ export const Dashboard = () => {
         <Routes>
           <Route path="/visa-application" element={<VisaApplications />} />
           <Route path="/visa-application/:id" element={<Application />} />
+          <Route path="/countries" element={<Countries />} />
+          <Route path="/countries/:id" element={<Application />} />
         </Routes>
       )}
     </Outlet>
