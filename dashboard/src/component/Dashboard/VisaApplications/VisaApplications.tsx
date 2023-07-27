@@ -1,48 +1,9 @@
-import { Alert, Avatar, Button, Card, List, Table } from 'antd';
-import { ColumnsType } from 'antd/es/table';
+import { Alert, Avatar, Button, List } from 'antd';
 import { PlusCircleOutlined, ReloadOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getAllUsers } from '../../../services/api';
 import { IVisaApplicant } from '../../../models/interfaces';
-import moment from 'moment';
-import uuid from 'react-uuid';
-
-// const useColumns = () => {
-//   const navigate = useNavigate();
-//   const columns: ColumnsType<IVisaApplicant> = [
-//     {
-//       title: 'Name',
-//       dataIndex: 'name',
-//       key: 'name',
-//       render: (_, record) => (
-//         <a onClick={() => navigate(record.id)}>{record.fullname}</a>
-//       ),
-//     },
-//     {
-//       title: 'Address',
-//       key: 'address',
-//       dataIndex: 'address',
-//       render: (_, record) => (
-//         <p>{`${record.country} - ${record.city}, ${record.street}`}</p>
-//       ),
-//     },
-//     {
-//       title: 'Date of Birth',
-//       key: 'dob',
-//       dataIndex: 'dob',
-//       render: (_, record) => <p>{moment(record.dob).format('YYYY-MM-DD')}</p>,
-//     },
-//     {
-//       title: 'Nationality',
-//       key: 'nationality',
-//       dataIndex: 'nationality',
-//       render: (_, record) => <p>{record.nationality}</p>,
-//     },
-//   ];
-
-//   return { columns };
-// };
 
 export const VisaApplications = () => {
   const navigate = useNavigate();
@@ -75,7 +36,6 @@ export const VisaApplications = () => {
           </Button>
         </div>
       </div>
-      {/* <Card className="m-auto"> */}
       {isError && (
         <Alert
           message="Error"
@@ -111,15 +71,8 @@ export const VisaApplications = () => {
               </List.Item>
             )}
           />
-          {/* <Table
-              columns={columns}
-              loading={isLoading}
-              dataSource={users?.data}
-              rowKey={uuid()}
-            /> */}
         </>
       )}
-      {/* </Card> */}
     </div>
   );
 };
