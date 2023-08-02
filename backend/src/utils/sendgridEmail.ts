@@ -19,7 +19,7 @@ export const sendRegisterEmail = async (
     templateId: 'd-1d5cc8dc97ff440887fd62671a34a58a',
     dynamicTemplateData: {
       subject: 'Verify registration',
-      Weblink: 'visastar.org',
+      Weblink: 'visa-ease.org',
       name: userFullname,
       emailToken,
     },

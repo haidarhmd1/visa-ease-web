@@ -1,6 +1,6 @@
 const SERVER_PORT = process.env.PORT || 3000;
 const SERVER_TOKEN_EXPIRETIME = process.env.SERVER_TOKEN_EXPIRETIME || 3600;
-const SERVER_TOKEN_ISSUER = process.env.SERVER_TOKEN_ISSUER || 'visastar';
+const SERVER_TOKEN_ISSUER = process.env.SERVER_TOKEN_ISSUER || 'visa-ease';
 const ACCESS_TOKEN_SECRET =
   process.env.ACCESS_TOKEN_SECRET ||
   '80476c317da57a8e86f590bcab09f147abc91bc94553284e6d847ed0963a7c621d0a7b6615b5729db2f8ef4c9cc9ef8b6353f05bb95e7da48dd4ec83a25814ad';
