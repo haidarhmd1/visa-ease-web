@@ -20,12 +20,6 @@ Visa Ease is a project that aims to simplify visa management and user administra
 
 Visa Ease streamlines the visa management process by offering a mobile application for users and a web dashboard for administrators. **_Please note that this projects repo is currently a work in progress_**.
 
-- **Node.js Backend:**
-
-  - API Endpoint 1: Description
-  - API Endpoint 2: Description
-  - ...
-
 - **React Web Dashboard:**
 
   - User Management: Create, update, and delete users.
