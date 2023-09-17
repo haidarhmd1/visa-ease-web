@@ -10,16 +10,16 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres?schema=public
+      - DATABASE_URL=postgresql://postgres:postgres@visaeasedb:5432/postgres?schema=public
   db:
+    hostname: visaeasedb
     image: postgres:13.2-alpine
     restart: always
     ports:
       - '5432:5432'
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     volumes:
       - ./local-data:/var/lib/postgresql/data
 volumes:
